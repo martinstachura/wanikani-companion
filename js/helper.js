@@ -39,7 +39,8 @@ function getWkUserData(){
 // get the user data via the WaniKani API
 function getApiData(publicKey, type, callback) {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://www.wanikani.com/api/user/" + publicKey + "/" + type, true);
+  xhr.open("GET", "https://api.wanikani.com/v2/"+ type, true);
+  xhr.setRequestHeader('Authorization', 'Bearer '+ publicKey);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       callback(JSON.parse(xhr.responseText));
